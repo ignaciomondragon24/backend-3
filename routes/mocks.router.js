@@ -1,15 +1,16 @@
-// routes/mocks.router.js
 import { Router } from 'express';
 import bcrypt from 'bcrypt';
 import { generateMockUsers } from '../utils/mocking.js';
 import UserRepository from '../repository/UserRepository.js';
 import PetRepository from '../repository/PetRepository.js';
+import Pet from '../dao/Pets.dao.js';
 
 const router = Router();
 
 // Endpoint para mockingpets
-router.get('/mockingpets', (req, res) => {
-  res.send('Mocking pets endpoint');
+router.get('/mockingpets', async (req, res) => {
+  const pets = await PetRepository.getAll();
+  res.json(pets);
 });
 
 // Endpoint para mockingusers

@@ -1,9 +1,10 @@
 
 import GenericRepository from "./GenericRepository.js";
+import Users from '../dao/Users.dao.js';
 
-export default class UserRepository extends GenericRepository{
-    constructor(dao){
-        super(dao);
+export default class UserRepository extends GenericRepository {
+    constructor() {
+        super(new Users());
     }
     
     getUserByEmail = (email) =>{
@@ -12,5 +13,4 @@ export default class UserRepository extends GenericRepository{
     getUserById = (id) =>{
         return this.getBy({_id:id})
     }
-    
 }
